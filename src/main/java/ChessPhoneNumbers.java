@@ -29,6 +29,7 @@ public class ChessPhoneNumbers {
         }
         else {
             for (int newPos : chessPiece.getPossibleDestinations(currentPosition)) {
+                chessPiece.registerMoveTo(newPos);
                 total += getTotalPossibleNumbers(newPos, digitsRemaining - 1);
             }
         }

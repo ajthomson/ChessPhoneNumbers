@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Knight implements ChessPiece {
 
-    private ImmutableMap<Integer, List<Integer>> destinationsForKey;
+    private final ImmutableMap<Integer, List<Integer>> destinationsForKey;
 
     public Knight() {
         destinationsForKey = ImmutableMap.<Integer, List<Integer>>builder()
@@ -27,7 +27,7 @@ public class Knight implements ChessPiece {
     }
 
     @Override
-    public List<Integer> getPossibleDestinations(Integer position) {
+    public List<Integer> getPossibleDestinations(final Integer position) {
         return destinationsForKey.get(position);
     }
 }
