@@ -28,7 +28,7 @@ This could then give me some test cases:
 
 This can be seen in the following diagram: 
 
-![knight moves from 0](docs/knight.png)
+![knight moves starting at 0](docs/knight.png)
 
 At this point I decided to then draw the possibilities as a graph to see if there was some pattern/approach I could take. 
 It occurred to me that the 11 numbers we get (starting at 0 for 2 moves) is from the total of possible destinations for 
@@ -50,6 +50,16 @@ and then becoming a queen, so we'd need to model the destinations for these, and
 even if the pawn started at 1, 2, or 3, it would have to make a move to those numbers (a piece can stay where it is) in order
 to become a queen. This may or may not be a correct assumption, but I wanted to clarify my approach.
 
+## Decisions
+Some of my thinking when writing this code:
+
+* A factory to create the pieces meant the creation is in one place and not polluting the main app, can also test in isolation
+* Factory and use of interface enables the use of polymorphism (and we don't need to change the ChessPhoneNumber class to support a new piece)
+* Individual classes for pieces encapsulates their behaviour and we can test them independently.
+* The above also means there isn't a 'god' data structure that could be difficult to maintain
+* AssertJ used because its interface is fluent.
+* ImmutableMap used to ensure the map is fixed once created/not possible to alter it as a side effect
+
 ## Building
 
 Please ensure you have `gradle 2.14` installed, as it uses Gradle to resolve dependencies and build the Jar, and Java 8,
@@ -62,7 +72,7 @@ Clone this repository to a local folder on your machine.
 
 ## Running
 
-Once you have build the 'fat' jar, run it as follows:
+Once you have built the 'fat' jar, run it as follows:
 
 `java -jar build/libs/ChessPhoneNumbers-all.jar <piece> <start-number>`
 
@@ -76,6 +86,7 @@ An exception will be thrown if it does not know about the piece requested.
 
 If I had spent more time I would consider:
 
-* increasing the number of unit tests, to cover other pieces and the total generated for other pieces.
+* increasing the number of unit tests, to cover other pieces and the total generated for other pieces. I quickly did a test for each piece that exercises the factory and ensures that they return some content. Having said that, a test in the main class exercises most of the methods to achive good coverage.
 * use a command line argument library like getOpt for extracting command line options more safely.
 * optionally print out the numbers generated to allow manual verification of the numbers generated (although with a large number of digits it becomes unmanageable)
+* investigate other approaches, I have a feeling it might be possible to solve this without recursion.

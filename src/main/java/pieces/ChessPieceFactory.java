@@ -13,7 +13,7 @@ public class ChessPieceFactory {
             return new Queen();
         }
 
-        if ("kinq".equalsIgnoreCase(pieceName)) {
+        if ("king".equalsIgnoreCase(pieceName)) {
             return new King();
         }
 

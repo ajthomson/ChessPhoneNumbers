@@ -41,6 +41,25 @@ public class ChessPhoneNumbersShould {
         assertThat(appWithPiece("pawn").getTotalPossibleNumbers(0, 3)).isEqualTo(18);
     }
 
+    @Test
+    public void return12ForBishopStartingAt1With2Moves() throws Throwable {
+        assertThat(appWithPiece("bishop").getTotalPossibleNumbers(1, 2)).isEqualTo(12);
+    }
+
+    @Test
+    public void return26ForRookStartingAt6With2Moves() throws Throwable {
+        assertThat(appWithPiece("rook").getTotalPossibleNumbers(6, 2)).isEqualTo(26);
+    }
+
+    @Test
+    public void return42ForKingStartingAt8With2Moves() throws Throwable {
+        assertThat(appWithPiece("king").getTotalPossibleNumbers(8, 2)).isEqualTo(42);
+    }
+
+    @Test
+    public void return55ForQueenStartingAt3With2Moves() throws Throwable {
+        assertThat(appWithPiece("queen").getTotalPossibleNumbers(3, 2)).isEqualTo(55);
+    }
 
 
     private ChessPhoneNumbers appWithPiece(final String piece) throws Throwable {

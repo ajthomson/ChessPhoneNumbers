@@ -13,7 +13,7 @@ public class Queen implements ChessPiece{
         destinationsForKey = ImmutableMap.<Integer, List<Integer>>builder()
             .put(0, Arrays.asList(0, 7, 9, 8, 5, 2))
             .put(1, Arrays.asList(1, 2, 3, 4, 7, 5, 9))
-            .put(2, Arrays.asList(2, 1, 3, 5, 8, 0))
+            .put(2, Arrays.asList(2, 1, 3, 5, 8, 0, 4, 6))
             .put(3, Arrays.asList(1, 2, 3, 5 ,7, 6, 9))
             .put(4, Arrays.asList(1, 2, 4, 5, 6, 7, 8))
             .put(5, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 0))
