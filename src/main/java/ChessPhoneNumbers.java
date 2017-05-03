@@ -1,6 +1,10 @@
 import pieces.ChessPiece;
 import pieces.ChessPieceFactory;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ChessPhoneNumbers {
 
     /** The chess piece the user selected. */
@@ -20,11 +24,11 @@ public class ChessPhoneNumbers {
      * @param digitsRemaining The number of digits remaining.
      * @return The total number of possible phone numbers.
      */
-    public int getTotalPossibleNumbers(final int currentPosition,
-                                       final int digitsRemaining) {
-        int total = 0;
+    public long getTotalPossibleNumbers(final int currentPosition,
+                                        final int digitsRemaining) {
+        long total = 0;
 
-        if (digitsRemaining <= 1) {
+        if (digitsRemaining == 1) {
             total += chessPiece.getPossibleDestinations(currentPosition).size();
         }
         else {
@@ -49,6 +53,6 @@ public class ChessPhoneNumbers {
 
         final ChessPhoneNumbers app = new ChessPhoneNumbers(ChessPieceFactory.get(pieceToUse));
 
-        System.out.println(app.getTotalPossibleNumbers(startPos, length));
+        System.out.println(app.getTotalPossibleNumbers(startPos, length-1));
     }
 }

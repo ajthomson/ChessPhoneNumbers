@@ -84,9 +84,19 @@ An exception will be thrown if it does not know about the piece requested.
 
 ## Improvements/Enhancements
 
+For up to 10 digits, it is reasonably performant, taking just over 2 seconds to get the total (MacBook Pro). 
+As the number of digits increases the amount of 'tree walking' increases considerably, so 11 digits takes 
+about 12 seconds, and so on. For a larger number of digits the approach would not necessarily be appropriate.
+
 If I had spent more time I would consider:
 
 * increasing the number of unit tests, to cover other pieces and the total generated for other pieces. I quickly did a test for each piece that exercises the factory and ensures that they return some content. Having said that, a test in the main class exercises most of the methods to achive good coverage.
 * use a command line argument library like getOpt for extracting command line options more safely.
 * optionally print out the numbers generated to allow manual verification of the numbers generated (although with a large number of digits it becomes unmanageable)
 * investigate other approaches, I have a feeling it might be possible to solve this without recursion.
+
+^^^ I started to look at an alternative approach that didn't use recursion, but simply kept track of the number of times 
+a number appeared as it went through each set of candidate moves (as the only thing that is important is the final 
+count of each number when we reach the penultimate level and we can calculate the total from summing the frequency of each
+number multiplied by the number of children it has), but the code became quite unreadable and complicated to follow, and 
+it didn't give the same number as the recursive approach as the number of digits went up, so more work was required.
