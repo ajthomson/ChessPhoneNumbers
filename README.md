@@ -26,6 +26,10 @@ This could then give me some test cases:
 * Starting at 0 for 2 moves gives us 11 different numbers. 
 * For a start of 0 with 3 moves (digits), from the graph, we get 37 three digit numbers. 
 
+This can be seen in the following diagram: 
+
+![knight moves from 0](docs/knight.png)
+
 At this point I decided to then draw the possibilities as a graph to see if there was some pattern/approach I could take. 
 It occurred to me that the 11 numbers we get (starting at 0 for 2 moves) is from the total of possible destinations for 
 the destinations of the penultimate move.
