@@ -22,9 +22,9 @@ I worked through the positions for each number, so that I had a mapping of curre
 This could then give me some test cases:
 
 * Looking at the destinations, its clear that knight starting at 5 is the simplest case as it cannot move anywhere else! 
-* Starting at 0 for 1 move, we could have 3 numbers (0, 4, 6)
-* Starting at 0 for 2 moves gives us 11 different numbers. 
-* For a start of 0 with 3 moves (digits), from the graph, we get 37 three digit numbers. 
+* A knight starting at 0 for 1 move, we could have 3 numbers (0, 4, 6)
+* A knight starting at 0 for 2 moves gives us 11 different numbers. 
+* For a knight starting at 0 with 3 moves, from the graph, we get 37 four digit numbers. 
 
 This can be seen in the following diagram: 
 
@@ -85,6 +85,9 @@ An exception will be thrown if it does not know about the piece requested.
 ## Improvements/Enhancements
 
 For up to 10 digits, it is reasonably performant, taking just over 2 seconds to get the total (MacBook Pro). 
+As 10 digits was the scope of the exercise, trying to make a larger number of digits be performant felt like 
+premature optimisation.
+
 As the number of digits increases the amount of 'tree walking' increases considerably, so 11 digits takes 
 about 12 seconds, and so on. For a larger number of digits the approach would not necessarily be appropriate.
 
@@ -93,10 +96,13 @@ If I had spent more time I would consider:
 * increasing the number of unit tests, to cover other pieces and the total generated for other pieces. I quickly did a test for each piece that exercises the factory and ensures that they return some content. Having said that, a test in the main class exercises most of the methods to achive good coverage.
 * use a command line argument library like getOpt for extracting command line options more safely.
 * optionally print out the numbers generated to allow manual verification of the numbers generated (although with a large number of digits it becomes unmanageable)
+* output the total where the first number was the starting number, along with where it wasn't - it would require some tweaks to the code.
 * investigate other approaches, I have a feeling it might be possible to solve this without recursion.
 
 ^^^ I started to look at an alternative approach that didn't use recursion, but simply kept track of the number of times 
 a number appeared as it went through each set of candidate moves (as the only thing that is important is the final 
 count of each number when we reach the penultimate level and we can calculate the total from summing the frequency of each
 number multiplied by the number of children it has), but the code became quite unreadable and complicated to follow, and 
-it didn't give the same number as the recursive approach as the number of digits went up, so more work was required.
+it didn't give the same number as the recursive approach as the number of digits went up, so more work was required. However,
+from some testing with a larger number of digits this is less expensive in terms of time, so there's a balance to reach 
+between readability, performance and the actual requirement (e.g. is the recursive approach good enough?)
